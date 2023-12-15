@@ -13,6 +13,11 @@ public class VehicleDriver extends VehicleBehaviours {
     MqttHandler mqttHandler;
     String vehicleId;
 
+    /**
+     * Public constructor of the class
+     * @param mqttHandler the client offering the connection to the mqtt server
+     * @param vehicleId the id of the car we are handling
+     */
     public VehicleDriver(MqttHandler mqttHandler, String vehicleId) {
         this.mqttHandler = mqttHandler;
         this.vehicleId = vehicleId;

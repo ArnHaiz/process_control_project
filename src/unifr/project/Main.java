@@ -80,14 +80,19 @@ public class Main {
             if (readVal == EMERGENCY_STOP_KEY) {
                 payloadEmergency.put("isInEmergency", "true");
                 mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
-                emergencyThread.start();
+
+                emergencyStop.updateEmergency();
+
                 System.out.println("Emergency mode engaged");
             } else if (readVal == EMERGENCY_RESTART_KEY) {
                 payloadEmergency.put("isInEmergency", "false");
                 mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
+
                 emergencyThread.interrupt();
                 emergencyThread = new Thread(emergencyStop);
+                emergencyStop.updateEmergency();
                 emergencyThread.start();
+
                 System.out.println("Emergency mode disengaged");
             }else {
                 //blinkThread.interrupt();

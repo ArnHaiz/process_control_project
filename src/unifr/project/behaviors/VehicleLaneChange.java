@@ -15,18 +15,19 @@ import java.util.Random;
 public class VehicleLaneChange extends VehicleBehaviours {
     MqttHandler mqttHandler;
     String vehicleId;
-    String trackTopic;
 
-    int[] possibleOffsets = {-10, 10};
+    int[] possibleOffsets = {-10, 10}; //the offsets to turn left and right respectively
     Random random = new Random();
 
+    /**
+     * Public constructor of the class
+     * @param mqttHandler the client offering the connection to the mqtt server
+     * @param vehicleId the id of the car we are handling
+     * @throws MqttException
+     */
     public VehicleLaneChange(MqttHandler mqttHandler, String vehicleId) throws MqttException {
         this.mqttHandler = mqttHandler;
         this.vehicleId = vehicleId;
-    }
-
-    public void unsubscribe() throws MqttException {
-        mqttHandler.unsubscribe(trackTopic);
     }
 
     @Override
