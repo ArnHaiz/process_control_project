@@ -22,6 +22,7 @@ public class Main {
     private final static int EMERGENCY_STOP_KEY = 's';
     private final static int EMERGENCY_RESTART_KEY = 'r';
     private final static ArrayList<Thread> threads = new ArrayList<>();
+    private static boolean hasTerminatedThreads = false;
 
     public static void main(String[] args) {
         try {
@@ -76,33 +77,38 @@ public class Main {
             mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
             mqttHandler.subscribe("Anki/Hosts/predictionGroup/s/EmergencyStatus");
 
-            int readVal = System.in.read();
-            if (readVal == EMERGENCY_STOP_KEY) {
-                payloadEmergency.put("isInEmergency", "true");
-                mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
+            while (true) {
+                int readVal = System.in.read();
+                if (readVal == -1) {
 
-                emergencyStop.updateEmergency();
+                } else if (readVal == EMERGENCY_RESTART_KEY) {
+                    payloadEmergency.put("isInEmergency", "false");
+                    mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
 
-                System.out.println("Emergency mode engaged");
-            } else if (readVal == EMERGENCY_RESTART_KEY) {
-                payloadEmergency.put("isInEmergency", "false");
-                mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
+                    emergencyThread.interrupt();
+                    emergencyThread = new Thread(emergencyStop);
+                    emergencyStop.updateEmergency();
+                    emergencyThread.start();
 
-                emergencyThread.interrupt();
-                emergencyThread = new Thread(emergencyStop);
-                emergencyStop.updateEmergency();
-                emergencyThread.start();
+                    System.out.println("Emergency mode disengaged");
+                } else if (readVal == EMERGENCY_STOP_KEY) {
+                    payloadEmergency.put("isInEmergency", "true");
+                    mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
 
-                System.out.println("Emergency mode disengaged");
-            }else {
-                //blinkThread.interrupt();
-                driverThread.interrupt();
-                laneChangeThread.interrupt();
-                //trackIdSubscription.unsubscribe();
-                //trackIdThread.interrupt();
-                emergencyThread.interrupt();
+                    emergencyStop.updateEmergency();
+                    hasTerminatedThreads = false;
+
+                    System.out.println("Emergency mode engaged");
+                } else if (!hasTerminatedThreads){
+                    //blinkThread.interrupt();
+                    driverThread.interrupt();
+                    laneChangeThread.interrupt();
+                    //trackIdSubscription.unsubscribe();
+                    //trackIdThread.interrupt();
+                    emergencyThread.interrupt();
+                    hasTerminatedThreads = true;
+                }
             }
-
         } catch (InterruptedException | IOException | MqttException e) {
             e.printStackTrace();
         }
