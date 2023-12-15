@@ -1,0 +1,1 @@
+This project is a part of the final project of process control (unifr semester 3 of computer science). It includes blinking, driving, lane change, emergency stop and track id subscription with all necessary libraries and files.
