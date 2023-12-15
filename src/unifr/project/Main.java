@@ -98,7 +98,6 @@ public class Main {
                 //blinkThread.interrupt();
                 driverThread.interrupt();
                 laneChangeThread.interrupt();
-                vehicleLaneChange.unsubscribe();
                 //trackIdSubscription.unsubscribe();
                 //trackIdThread.interrupt();
                 emergencyThread.interrupt();
