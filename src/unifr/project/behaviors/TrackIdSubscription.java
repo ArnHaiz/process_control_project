@@ -1,11 +1,13 @@
-package unifr.project;
+package unifr.project.behaviors;
+
+import unifr.project.MqttHandler;
 
 /**
  * Class handling the subscription to the track status of the car with id <span>vehicleId</span>
  *
  * @author Arnaud Haizmann (20-806-436)
  */
-public class TrackIdSubscription implements Runnable {
+public class TrackIdSubscription extends VehicleBehaviours {
     private MqttHandler mqttHandler;
     String topic;
 

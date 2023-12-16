@@ -30,7 +30,7 @@ public class VehicleBlinker extends VehicleBehaviours {
             ObjectNode payload = objectMapper.createObjectNode();
             payload.put("type", "lights");
 
-            while(true) {
+            while (true) {
                 payload.putObject("payload").put("back", "on");
                 mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
                 payload.putObject("payload").put("front", "off");

@@ -7,8 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
-import unifr.project.behaviors.VehicleDriver;
-import unifr.project.behaviors.VehicleLaneChange;
+import unifr.project.behaviors.*;
 
 /**
  * Main class of this subsection of the project managing the connection, control and status of the car with id <span>vehicleId</span> on different threads
@@ -17,10 +16,11 @@ import unifr.project.behaviors.VehicleLaneChange;
  */
 public class Main {
 
-    static String vehicleId = "d205effe02cb"; //id of the car we are working on, has to be defined by hand
+    static String vehicleId = "d11d2fea5c74"; //id of the car we are working on, has to be defined by hand
     static Boolean isInEmergency = false;
     private final static int EMERGENCY_STOP_KEY = 's';
     private final static int EMERGENCY_RESTART_KEY = 'r';
+    private final static ArrayList<VehicleBehaviours> vehicleBehaviours = new ArrayList<>();
     private final static ArrayList<Thread> threads = new ArrayList<>();
     private static boolean hasTerminatedThreads = false;
 
@@ -28,30 +28,24 @@ public class Main {
         try {
             MqttHandler mqttHandler = new MqttHandler("tcp://192.168.4.1:1883", "PredictionGroups");
 
-            /*VehicleBlinker vehicleBlinker = new VehicleBlinker(mqttHandler, vehicleId);
+            VehicleBlinker vehicleBlinker = new VehicleBlinker(mqttHandler, vehicleId);
             Thread blinkThread = new Thread(vehicleBlinker);
-            threads.add(blinkThread);*/
+            threads.add(blinkThread);
 
             VehicleDriver vehicleDriver = new VehicleDriver(mqttHandler, vehicleId);
             Thread driverThread = new Thread(vehicleDriver);
+            vehicleBehaviours.add(vehicleDriver);
             threads.add(driverThread);
 
             VehicleLaneChange vehicleLaneChange = new VehicleLaneChange(mqttHandler, vehicleId);
             Thread laneChangeThread = new Thread(vehicleLaneChange);
+            vehicleBehaviours.add(vehicleLaneChange);
             threads.add(laneChangeThread);
 
-            /*TrackIdSubscription trackIdSubscription = new TrackIdSubscription(mqttHandler, vehicleId);
+            TrackIdSubscription trackIdSubscription = new TrackIdSubscription(mqttHandler, vehicleId);
             Thread trackIdThread = new Thread(trackIdSubscription);
-            threads.add(trackIdThread);*/
-
-            EmergencyStop emergencyStop = new EmergencyStop(threads);
-            Thread emergencyThread = new Thread(emergencyStop);
-
-            //blinkThread.start();
-            driverThread.start();
-            laneChangeThread.start();
-            //trackIdThread.start();
-            emergencyThread.start();
+            vehicleBehaviours.add(trackIdSubscription);
+            threads.add(trackIdThread);
 
             ObjectMapper objectMapper = new ObjectMapper();
 
@@ -77,36 +71,49 @@ public class Main {
             mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
             mqttHandler.subscribe("Anki/Hosts/predictionGroup/s/EmergencyStatus");
 
+            for (Thread thread : threads) thread.start();
+
             while (true) {
                 int readVal = System.in.read();
                 if (readVal == -1) {
 
+                } else if (readVal == EMERGENCY_STOP_KEY) {
+                    ObjectNode speedPayload = objectMapper.createObjectNode();
+                    speedPayload.put("type", "speed");
+                    speedPayload.putObject("payload").put("velocity", 0).put("acceleration", 400);
+
+                    payloadEmergency.put("isInEmergency", "true");
+                    mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
+                    mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", speedPayload.toString());
+
+                    for (Thread thread : threads) {
+                        thread.interrupt();
+                        threads.remove(thread);
+                    }
+                    hasTerminatedThreads = true;
+
+                    System.out.println("Emergency mode engaged");
                 } else if (readVal == EMERGENCY_RESTART_KEY) {
                     payloadEmergency.put("isInEmergency", "false");
                     mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
 
-                    emergencyThread.interrupt();
-                    emergencyThread = new Thread(emergencyStop);
-                    emergencyStop.updateEmergency();
-                    emergencyThread.start();
+                    blinkThread = new Thread(vehicleBlinker);
+                    driverThread = new Thread(vehicleDriver);
+                    laneChangeThread = new Thread(vehicleLaneChange);
+                    trackIdThread = new Thread(trackIdSubscription);
+                    threads.add(blinkThread);
+                    threads.add(driverThread);
+                    threads.add(laneChangeThread);
+                    threads.add(trackIdThread);
 
-                    System.out.println("Emergency mode disengaged");
-                } else if (readVal == EMERGENCY_STOP_KEY) {
-                    payloadEmergency.put("isInEmergency", "true");
-                    mqttHandler.publish("Anki/Hosts/predictionGroup/s/EmergencyStatus", payloadEmergency.toString());
 
-                    emergencyStop.updateEmergency();
                     hasTerminatedThreads = false;
 
-                    System.out.println("Emergency mode engaged");
+                    System.out.println("Emergency mode disengaged");
                 } else if (!hasTerminatedThreads){
-                    //blinkThread.interrupt();
-                    driverThread.interrupt();
-                    laneChangeThread.interrupt();
-                    //trackIdSubscription.unsubscribe();
-                    //trackIdThread.interrupt();
-                    emergencyThread.interrupt();
+                    for (Thread thread : threads) thread.interrupt();
                     hasTerminatedThreads = true;
+                    break;
                 }
             }
         } catch (InterruptedException | IOException | MqttException e) {

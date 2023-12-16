@@ -2,6 +2,8 @@ package unifr.project.behaviors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import unifr.project.Delay;
 import unifr.project.MqttHandler;
 
 /**
@@ -29,6 +31,7 @@ public class VehicleDriver extends VehicleBehaviours {
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectNode payload = objectMapper.createObjectNode();
             payload.put("type", "speed");
+            System.out.println("speeeeeeeeeeeeeed");
 
             while (true) {
                 payload.putObject("payload").put("velocity", 400).put("acceleration", 500);
@@ -39,7 +42,7 @@ public class VehicleDriver extends VehicleBehaviours {
                 mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
                 Thread.sleep(5000);
             }
-        } catch (Exception e) {
+        } catch (InterruptedException | MqttException e) {
             e.printStackTrace();
         }
     }

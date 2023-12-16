@@ -36,7 +36,7 @@ public class EmergencyStop implements Runnable {
                 if (emergency && !areJoined) {
                     areJoined = true;
                     for (Thread thread : threads) {
-                        thread.join();
+                        thread.interrupt();
                     }
                 } else {
                     areJoined = false;
