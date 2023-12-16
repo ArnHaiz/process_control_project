@@ -26,11 +26,17 @@ public class VehicleDriver extends VehicleBehaviours {
     }
 
     @Override
+    public VehicleDriver createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return new VehicleDriver(mqttHandler, vehicleId);
+    }
+
+    @Override
     public void run() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode payload = objectMapper.createObjectNode();
+        payload.put("type", "speed");
+
         try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            ObjectNode payload = objectMapper.createObjectNode();
-            payload.put("type", "speed");
             System.out.println("speeeeeeeeeeeeeed");
 
             while (true) {
@@ -43,7 +49,13 @@ public class VehicleDriver extends VehicleBehaviours {
                 Thread.sleep(5000);
             }
         } catch (InterruptedException | MqttException e) {
-            e.printStackTrace();
+            try {
+                payload.putObject("payload").put("velocity", 0).put("acceleration", 300);
+                mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
+            } catch (MqttException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println("Thread running the driving for car " + vehicleId + "has been interrupted");
         }
     }
 }

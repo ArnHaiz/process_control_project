@@ -24,6 +24,11 @@ public class VehicleDiscover extends VehicleBehaviours {
     }
 
     @Override
+    public VehicleDiscover createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return new VehicleDiscover(mqttHandler, vehicleId);
+    }
+
+    @Override
     public void run() {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
@@ -41,7 +46,7 @@ public class VehicleDiscover extends VehicleBehaviours {
             payloadDiscover.putObject("payload").put("value", "false");
             mqttHandler.publish("Anki/Hosts/U/hyperdrive/I", payloadDiscover.toString());
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Thread running the discovering and connection for car " + vehicleId + "has been interrupted");
         }
     }
 }

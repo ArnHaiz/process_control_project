@@ -9,6 +9,10 @@ public abstract class VehicleBehaviours implements Runnable {
     MqttHandler mqttHandler;
     String vehicleId;
 
+    public VehicleBehaviours createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return null;
+    }
+
     @Override
     public void run(){}
 }

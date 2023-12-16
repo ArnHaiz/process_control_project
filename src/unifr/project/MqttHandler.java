@@ -89,8 +89,6 @@ public class MqttHandler {
         public void messageArrived(String topic, MqttMessage message) throws Exception {
             if (topic.endsWith("Anki/Hosts/predictionGroup/s/emergencyStatus")) {
                 Main.isInEmergency = message.toString().equals("true");
-            } else if (topic.endsWith("/S/onTrack")) {
-
             }
             System.out.println("Message " + message + " has arrived on topic " + topic);
 

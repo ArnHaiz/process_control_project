@@ -33,11 +33,17 @@ public class TrackIdSubscription extends VehicleBehaviours {
     }
 
     @Override
+    public TrackIdSubscription createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return new TrackIdSubscription(mqttHandler, vehicleId);
+    }
+
+    @Override
     public void run() {
         try {
             mqttHandler.subscribe(topic);
         } catch (Exception e) {
-            e.printStackTrace();
+            unsubscribe();
+            System.out.println("Thread running the subscribing to track's informations for car" + vehicleId + "has been interrupted");
         }
     }
 }

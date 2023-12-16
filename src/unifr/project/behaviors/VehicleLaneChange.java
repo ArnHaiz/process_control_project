@@ -23,31 +23,43 @@ public class VehicleLaneChange extends VehicleBehaviours {
      * Public constructor of the class
      * @param mqttHandler the client offering the connection to the mqtt server
      * @param vehicleId the id of the car we are handling
-     * @throws MqttException
      */
-    public VehicleLaneChange(MqttHandler mqttHandler, String vehicleId) throws MqttException {
+    public VehicleLaneChange(MqttHandler mqttHandler, String vehicleId) {
         this.mqttHandler = mqttHandler;
         this.vehicleId = vehicleId;
     }
 
     @Override
-    public void run() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            ObjectNode payload = objectMapper.createObjectNode();
-            payload.put("type", "lane");
+    public VehicleLaneChange createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return new VehicleLaneChange(mqttHandler, vehicleId);
+    }
 
+    @Override
+    public void run() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode payload = objectMapper.createObjectNode();
+        payload.put("type", "lane");
+
+        try {
             while (true) {
                 int rdm = random.nextInt(0, 2);
                 System.out.println("new lane change try");
                 payload.putObject("payload").put("offset", possibleOffsets[rdm])
                         .put("velocity", 300).put("acceleration", "400");
-                System.out.println(payload);
                 mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
                 Thread.sleep(5000);
             }
 
-        } catch (InterruptedException | MqttException e) {
+        } catch (InterruptedException e) {
+            try {
+                mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
+            } catch (MqttException ex) {
+                ex.printStackTrace();
+            }
+            payload.putObject("payload").put("offset", 0)
+                        .put("velocity", 0).put("acceleration", 400);
+            System.out.println("Thread running the lane changing for car " + vehicleId + "has been interrupted");
+        } catch (MqttException e) {
             e.printStackTrace();
         }
     }

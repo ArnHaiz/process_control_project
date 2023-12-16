@@ -2,6 +2,7 @@ package unifr.project.behaviors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import unifr.project.MqttHandler;
 
 /**
@@ -24,12 +25,17 @@ public class VehicleBlinker extends VehicleBehaviours {
     }
 
     @Override
-    public void run() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            ObjectNode payload = objectMapper.createObjectNode();
-            payload.put("type", "lights");
+    public VehicleBlinker createNewInstance(MqttHandler mqttHandler, String vehicleId) {
+        return new VehicleBlinker(mqttHandler, vehicleId);
+    }
 
+    @Override
+    public void run() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectNode payload = objectMapper.createObjectNode();
+        payload.put("type", "lights");
+
+        try {
             while (true) {
                 payload.putObject("payload").put("back", "on");
                 mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
@@ -44,7 +50,16 @@ public class VehicleBlinker extends VehicleBehaviours {
                 Thread.sleep(1000);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                payload.putObject("payload").put("back", "off");
+                mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
+
+                payload.putObject("payload").put("front", "off");
+                mqttHandler.publish("Anki/Vehicles/U/" + vehicleId + "/I", payload.toString());
+            } catch (MqttException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println("Thread running the alternated blinking for car " + vehicleId + "has been interrupted");
         }
     }
 }
