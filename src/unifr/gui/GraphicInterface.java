@@ -59,6 +59,9 @@ public class GraphicInterface extends Application {
         splitPane.setMinSize(STATUS_DISPLAY_WIDTH, STATUS_DISPLAY_HEIGHT);
         splitPane.setMaxSize(STATUS_DISPLAY_WIDTH, STATUS_DISPLAY_HEIGHT);
 
+        borderPane.setMinSize(CIRCUIT_DISPLAY_WIDTH + STATUS_DISPLAY_WIDTH, CIRCUIT_DISPLAY_HEIGHT + STATUS_DISPLAY_HEIGHT);
+        borderPane.setMaxSize(CIRCUIT_DISPLAY_WIDTH + STATUS_DISPLAY_WIDTH, CIRCUIT_DISPLAY_HEIGHT + STATUS_DISPLAY_HEIGHT);
+
         menuBar = new MenuBar();
         menuItem = new MenuItem();
 
@@ -73,6 +76,7 @@ public class GraphicInterface extends Application {
         borderPane.setTop(menuBar);
 
         primaryStage.setScene(new Scene(borderPane, WINDOW_WIDTH, WINDOW_HEIGHT));
+        primaryStage.setResizable(false);
         primaryStage.show();
 
     }

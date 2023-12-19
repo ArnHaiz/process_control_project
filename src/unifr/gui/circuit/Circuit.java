@@ -88,6 +88,8 @@ public class Circuit {
 
 
         stackPane = new StackPane();
+        stackPane.setMinSize(1020, 720);
+        stackPane.setMaxSize(1020, 720);
         for (Segment segment : segments) stackPane.getChildren().add(segment.pane());
     }
 
