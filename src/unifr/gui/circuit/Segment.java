@@ -18,8 +18,8 @@ public class Segment {
     private static final double SEGMENT_WIDTH_RATIO = SEGMENT_WIDTH_PIXELS / SEGMENT_WIDTH_CM_A4;
     private static final double SEGMENT_HEIGHT_RATIO = SEGMENT_HEIGHT_PIXELS / SEGMENT_HEIGHT_CM_A4;
 
-    private static int leftX;
-    private static int leftY;
+    public int leftX;
+    public int leftY;
 
     Polyline polyline1;
     Polyline polyline2;
@@ -90,9 +90,9 @@ public class Segment {
             case((byte) 9):
             case((byte) 18):
                 leftX = 0;
-                if (segmentId == 1) {
+                if (segmentId == (byte) 1) {
                     leftY = SEGMENT_HEIGHT_PIXELS;
-                } else if (segmentId == 9) {
+                } else if (segmentId == (byte) 9) {
                     leftY = 2 * SEGMENT_HEIGHT_PIXELS;
                 } else {
                     leftY = 3 * SEGMENT_HEIGHT_PIXELS;
@@ -121,14 +121,14 @@ public class Segment {
 
                 polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, 261, SEGMENT_WIDTH_RATIO * 4.1, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.09);
-                lane2 = new Lane((byte) 2, 247, SEGMENT_WIDTH_RATIO * 4.285, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.285);
-                lane3 = new Lane((byte) 3, 232, SEGMENT_WIDTH_RATIO * 4.48, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4);
-                lane4 = new Lane((byte) 4, 218, SEGMENT_WIDTH_RATIO * 4.67, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.65);
-                lane5 = new Lane((byte) 5, 261, SEGMENT_WIDTH_RATIO * 4.1, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.815);
-                lane6 = new Lane((byte) 6, 247, SEGMENT_WIDTH_RATIO * 4.285, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.01);
-                lane7 = new Lane((byte) 7, 232, SEGMENT_WIDTH_RATIO * 4.48, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.2);
-                lane8 = new Lane((byte) 8, 218, SEGMENT_WIDTH_RATIO * 4.67, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.4);
+                lane1 = new Lane((byte) 1, 261, SEGMENT_WIDTH_RATIO * 4.1, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.815);
+                lane2 = new Lane((byte) 2, 247, SEGMENT_WIDTH_RATIO * 4.285, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.01);
+                lane3 = new Lane((byte) 3, 232, SEGMENT_WIDTH_RATIO * 4.48, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.2);
+                lane4 = new Lane((byte) 4, 218, SEGMENT_WIDTH_RATIO * 4.67, SEGMENT_HEIGHT_PIXELS, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.4);
+                lane5 = new Lane((byte) 5, 261, SEGMENT_WIDTH_RATIO * 4.1, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.09);
+                lane6 = new Lane((byte) 6, 247, SEGMENT_WIDTH_RATIO * 4.285, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.285);
+                lane7 = new Lane((byte) 7, 232, SEGMENT_WIDTH_RATIO * 4.48, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.4);
+                lane8 = new Lane((byte) 8, 218, SEGMENT_WIDTH_RATIO * 4.67, 0, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.65);
                 lane9 = new Lane((byte) 9, 278, SEGMENT_WIDTH_RATIO * 3.32, 0, SEGMENT_WIDTH_RATIO * 3.32, SEGMENT_HEIGHT_PIXELS);
                 lane10 = new Lane((byte) 10, 278, SEGMENT_WIDTH_RATIO * 3.5, 0, SEGMENT_WIDTH_RATIO * 3.5, SEGMENT_HEIGHT_PIXELS);
                 lane11 = new Lane((byte) 11, 278, SEGMENT_WIDTH_RATIO * 3.7, 0, SEGMENT_WIDTH_RATIO * 3.7, SEGMENT_HEIGHT_PIXELS);
@@ -144,9 +144,9 @@ public class Segment {
             case((byte) 12):
             case((byte) 19):
                 leftX = 4 * SEGMENT_WIDTH_PIXELS;
-                if (segmentId == 2) {
+                if (segmentId == (byte) 2) {
                     leftY = SEGMENT_HEIGHT_PIXELS;
-                } else if (segmentId == 12) {
+                } else if (segmentId == (byte) 12) {
                     leftY = 2 * SEGMENT_HEIGHT_PIXELS;
                 } else {
                     leftY = 3 * SEGMENT_HEIGHT_PIXELS;
@@ -175,14 +175,14 @@ public class Segment {
 
                 polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, 261, 0, SEGMENT_HEIGHT_RATIO * 2.09, SEGMENT_WIDTH_RATIO * 3.9, 0);
-                lane2 = new Lane((byte) 2, 247, 0, SEGMENT_HEIGHT_RATIO * 2.285, SEGMENT_WIDTH_RATIO * 3.7, 0);
-                lane3 = new Lane((byte) 3, 232, 0, SEGMENT_HEIGHT_RATIO * 4, SEGMENT_WIDTH_RATIO * 3.5, 0);
-                lane4 = new Lane((byte) 4, 218, 0, SEGMENT_HEIGHT_RATIO * 2.65, SEGMENT_WIDTH_RATIO * 3.3, 0);
-                lane5 = new Lane((byte) 5, 261, 0, SEGMENT_HEIGHT_RATIO * 2.815, SEGMENT_WIDTH_RATIO * 3.9, SEGMENT_HEIGHT_PIXELS);
-                lane6 = new Lane((byte) 6, 247, 0, SEGMENT_HEIGHT_RATIO * 3.01, SEGMENT_WIDTH_RATIO * 3.7, SEGMENT_HEIGHT_PIXELS);
-                lane7 = new Lane((byte) 7, 232, 0, SEGMENT_HEIGHT_RATIO * 3.2, SEGMENT_WIDTH_RATIO * 3.5, SEGMENT_HEIGHT_PIXELS);
-                lane8 = new Lane((byte) 8, 218, 0, SEGMENT_HEIGHT_RATIO * 3.4, SEGMENT_WIDTH_RATIO * 3.3, SEGMENT_HEIGHT_PIXELS);
+                lane1 = new Lane((byte) 1, 261, 0, SEGMENT_HEIGHT_RATIO * 2.815, SEGMENT_WIDTH_RATIO * 3.9, SEGMENT_HEIGHT_PIXELS);
+                lane2 = new Lane((byte) 2, 247, 0, SEGMENT_HEIGHT_RATIO * 3.01, SEGMENT_WIDTH_RATIO * 3.7, SEGMENT_HEIGHT_PIXELS);
+                lane3 = new Lane((byte) 3, 232, 0, SEGMENT_HEIGHT_RATIO * 3.2, SEGMENT_WIDTH_RATIO * 3.5, SEGMENT_HEIGHT_PIXELS);
+                lane4 = new Lane((byte) 4, 218, 0, SEGMENT_HEIGHT_RATIO * 3.4, SEGMENT_WIDTH_RATIO * 3.3, SEGMENT_HEIGHT_PIXELS);
+                lane5 = new Lane((byte) 5, 261, 0, SEGMENT_HEIGHT_RATIO * 2.09, SEGMENT_WIDTH_RATIO * 3.9, 0);
+                lane6 = new Lane((byte) 6, 247, 0, SEGMENT_HEIGHT_RATIO * 2.285, SEGMENT_WIDTH_RATIO * 3.7, 0);
+                lane7 = new Lane((byte) 7, 232, 0, SEGMENT_HEIGHT_RATIO * 4, SEGMENT_WIDTH_RATIO * 3.5, 0);
+                lane8 = new Lane((byte) 8, 218, 0, SEGMENT_HEIGHT_RATIO * 2.65, SEGMENT_WIDTH_RATIO * 3.3, 0);
                 lane9 = new Lane((byte) 9, 278, SEGMENT_WIDTH_RATIO * 4.615, 0, SEGMENT_WIDTH_RATIO * 4.615, SEGMENT_HEIGHT_PIXELS);
                 lane10 = new Lane((byte) 10, 278, SEGMENT_WIDTH_RATIO * 4.42, 0, SEGMENT_WIDTH_RATIO * 4.42, SEGMENT_HEIGHT_PIXELS);
                 lane11 = new Lane((byte) 11, 278, SEGMENT_WIDTH_RATIO * 4.245, 0, SEGMENT_WIDTH_RATIO * 4.245, SEGMENT_HEIGHT_PIXELS);
@@ -193,11 +193,11 @@ public class Segment {
                 lane16 = new Lane((byte) 16, 0, 0, 0, 0, 0);
 
                 break;
-            case ((byte) 3):
+            case ((byte) 4):
             case((byte) 6):
                 leftX = 2 * SEGMENT_WIDTH_PIXELS;
-                if (segmentId == 3) {
-                    leftY = 4 * SEGMENT_HEIGHT_PIXELS;
+                if (segmentId == (byte) 4) {
+                    leftY = 0;
                 } else {
                     leftY = 2 * SEGMENT_HEIGHT_PIXELS;
                 }
@@ -224,14 +224,14 @@ public class Segment {
 
                 polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
+                lane1 = new Lane((byte) 1, , );
+                lane2 = new Lane((byte) 2, , );
+                lane3 = new Lane((byte) 3, , );
+                lane4 = new Lane((byte) 4, , );
+                lane5 = new Lane((byte) 5, , );
+                lane6 = new Lane((byte) 6, , );
+                lane7 = new Lane((byte) 7, , );
+                lane8 = new Lane((byte) 8, , );
                 lane9 = new Lane((byte) 9, );
                 lane10 = new Lane((byte) 10, );
                 lane11 = new Lane((byte) 11, );
@@ -242,13 +242,13 @@ public class Segment {
                 lane16 = new Lane((byte) 16, );
 
                 break;
-            case ((byte) 4):
-            case((byte) 17):
+            case ((byte) 3):
+            case((byte) 5):
                 leftX = 2 * SEGMENT_WIDTH_PIXELS;
-                if (segmentId == 4) {
-                    leftY = 0;
+                if (segmentId == (byte) 3) {
+                    leftY = 4 * SEGMENT_HEIGHT_PIXELS;
                 } else {
-                    leftY = 3 * SEGMENT_HEIGHT_PIXELS;
+                    leftY = SEGMENT_HEIGHT_PIXELS;
                 }
 
                 polyline1.getPoints().add();
@@ -289,177 +289,196 @@ public class Segment {
                 lane16 = new Lane((byte) 16, );
 
                 break;
-            case ((byte) 5):
+            case ((byte) 17): //                                     fnrsigfbrebfkler
                 leftX = 2 * SEGMENT_WIDTH_PIXELS;
-                leftY = SEGMENT_HEIGHT_PIXELS;
+                leftY = 3 * SEGMENT_HEIGHT_PIXELS;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.85);
+                polyline1.getPoints().add(SEGMENT_WIDTH_RATIO * 3);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.85);
+                polyline1.getPoints().add(SEGMENT_WIDTH_RATIO * 3);
+                polyline1.getPoints().add(0.0);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(SEGMENT_WIDTH_RATIO * 5);
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_WIDTH_RATIO * 5);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.85);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.85);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline3.getPoints().add(SEGMENT_WIDTH_RATIO * 3);
+                polyline3.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline3.getPoints().add(SEGMENT_WIDTH_RATIO * 3);
+                polyline3.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline4.getPoints().add(SEGMENT_WIDTH_RATIO * 5);
+                polyline4.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
+                polyline4.getPoints().add(SEGMENT_WIDTH_RATIO * 5);
+                polyline4.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline4.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline4.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                //2.2, 2.4, 2.6, 2.8, 3, 3.18, 3.38, 3.55 || 3.35, 3.55, 3.73, 3.91, 4.1, 4.3, 4.5, 4.7
+                lane1 = new Lane((byte) 1, 392, 0, SEGMENT_HEIGHT_RATIO * 2.2, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.2);
+                lane2 = new Lane((byte) 2, 392, 0, SEGMENT_HEIGHT_RATIO * 2.4, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.4);
+                lane3 = new Lane((byte) 3, 392, 0, SEGMENT_HEIGHT_RATIO * 2.6, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.6);
+                lane4 = new Lane((byte) 4, 392, 0, SEGMENT_HEIGHT_RATIO * 2.8, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.8);
+                lane5 = new Lane((byte) 5, 392, 0, SEGMENT_HEIGHT_RATIO * 3, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane6 = new Lane((byte) 6, 392, 0, SEGMENT_HEIGHT_RATIO * 3.18, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.18);
+                lane7 = new Lane((byte) 7, 392, 0, SEGMENT_HEIGHT_RATIO * 3.38, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.38);
+                lane8 = new Lane((byte) 8, 392, 0, SEGMENT_HEIGHT_RATIO * 3.55, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.55);
+                lane9 = new Lane((byte) 9, 392, SEGMENT_WIDTH_RATIO * 3.35, 0, SEGMENT_WIDTH_RATIO * 3.35, SEGMENT_HEIGHT_PIXELS);
+                lane10 = new Lane((byte) 10, 392, SEGMENT_WIDTH_RATIO * 3.55, 0, SEGMENT_WIDTH_RATIO * 3.55, SEGMENT_HEIGHT_PIXELS);
+                lane11 = new Lane((byte) 11, 392, SEGMENT_WIDTH_RATIO * 3.73, 0, SEGMENT_WIDTH_RATIO * 3.73, SEGMENT_HEIGHT_PIXELS);
+                lane12 = new Lane((byte) 12, 392, SEGMENT_WIDTH_RATIO * 3.91, 0, SEGMENT_WIDTH_RATIO * 3.91, SEGMENT_HEIGHT_PIXELS);
+                lane13 = new Lane((byte) 13, 392, SEGMENT_WIDTH_RATIO * 4.1, 0, SEGMENT_WIDTH_RATIO * 4.1, SEGMENT_HEIGHT_PIXELS);
+                lane14 = new Lane((byte) 14, 392, SEGMENT_WIDTH_RATIO * 4.3, 0, SEGMENT_WIDTH_RATIO * 4.3, SEGMENT_HEIGHT_PIXELS);
+                lane15 = new Lane((byte) 15, 392, SEGMENT_WIDTH_RATIO * 4.5, 0, SEGMENT_WIDTH_RATIO * 4.5, SEGMENT_HEIGHT_PIXELS);
+                lane16 = new Lane((byte) 16, 392, SEGMENT_WIDTH_RATIO * 4.7, 0, SEGMENT_WIDTH_RATIO * 4.7, SEGMENT_HEIGHT_PIXELS);
 
                 break;
-            case ((byte) 7):
-            case((byte) 8):
-                leftY = SEGMENT_HEIGHT_PIXELS;
-                if (segmentId == 7) {
+            case ((byte) 22):
+            case((byte) 23):
+                leftY = 3 * SEGMENT_HEIGHT_PIXELS;
+                if (segmentId == (byte) 22) {
                     leftX = SEGMENT_WIDTH_PIXELS;
                 } else {
                     leftX = 3 * SEGMENT_WIDTH_PIXELS;
                 }
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.7);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.7);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline3.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+
+                polyline4.setVisible(false);
+
+                //2.2, 2.4, 2.6, 2.8, 3, 3.18, 3.38, 3.55
+                lane1 = new Lane((byte) 1, 196, 0, SEGMENT_HEIGHT_RATIO * 3.55, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.55);
+                lane2 = new Lane((byte) 2, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.55, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane3 = new Lane((byte) 3, 196, 0, SEGMENT_HEIGHT_RATIO * .38, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.38);
+                lane4 = new Lane((byte) 4, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.38, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane5 = new Lane((byte) 5, 196, 0, SEGMENT_HEIGHT_RATIO * 3.18, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.18);
+                lane6 = new Lane((byte) 6, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.18, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane7 = new Lane((byte) 7, 196, 0, SEGMENT_HEIGHT_RATIO * 3, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane8 = new Lane((byte) 8, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3);
+                lane9 = new Lane((byte) 9, 196, 0, SEGMENT_HEIGHT_RATIO * 2.8, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.8);
+                lane10 = new Lane((byte) 10, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.8, SEGMENT_WIDTH_RATIO, SEGMENT_HEIGHT_RATIO * 2.8);
+                lane11 = new Lane((byte) 11, 196, 0, SEGMENT_HEIGHT_RATIO * 2.6, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.6);
+                lane12 = new Lane((byte) 12, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.6, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.6);
+                lane13 = new Lane((byte) 13, 196, 0, SEGMENT_HEIGHT_RATIO * 2.4, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.4);
+                lane14 = new Lane((byte) 14, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.4, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.4);
+                lane15 = new Lane((byte) 15, 196, 0, SEGMENT_HEIGHT_RATIO * 2.2, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.2);
+                lane16 = new Lane((byte) 16, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.2, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.2);
 
                 break;
             case ((byte) 10):
                 leftX = 3 * SEGMENT_WIDTH_PIXELS;
                 leftY = 2 * SEGMENT_HEIGHT_PIXELS;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.75);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 2.1);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.setVisible(false);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                lane1 = new Lane((byte) 1, 142, 0, SEGMENT_HEIGHT_RATIO * 1.7, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.42 + 1.7));
+                lane2 = new Lane((byte) 2, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.42 + 1.7), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.42);
+                lane3 = new Lane((byte) 3, 142, 0, SEGMENT_HEIGHT_RATIO * 1.51, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.25 + 1.51));
+                lane4 = new Lane((byte) 4, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.25 + 1.51), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.25);
+                lane5 = new Lane((byte) 5, 142, 0, SEGMENT_HEIGHT_RATIO * 1.33, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.07 + 1.33));
+                lane6 = new Lane((byte) 6, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.07 + 1.33), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.07);
+                lane7 = new Lane((byte) 7, 142, 0, SEGMENT_HEIGHT_RATIO * 1.15, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.89 + 1.15));
+                lane8 = new Lane((byte) 8, 142,  0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.89 + 1.15), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.89);
+                lane9 = new Lane((byte) 9, 142, 0, SEGMENT_HEIGHT_RATIO * 0.97, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.7 + 0.97));
+                lane10 = new Lane((byte) 10, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.7 + 0.97), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.7);
+                lane11 = new Lane((byte) 11, 142, 0, SEGMENT_HEIGHT_RATIO * 0.8, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.5 + 0.8));
+                lane12 = new Lane((byte) 12, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.5 + 0.8), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.5);
+                lane13 = new Lane((byte) 13, 142, 0, SEGMENT_HEIGHT_RATIO * 0.6, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.3 + 0.6));
+                lane14 = new Lane((byte) 14, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.3 + 0.6), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.3);
+                lane15 = new Lane((byte) 15, 142, 0, SEGMENT_HEIGHT_RATIO * 0.4, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.1 + 0.4));
+                lane16 = new Lane((byte) 16, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.1 + 0.4), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 2.1);
 
                 break;
             case ((byte) 11):
                 leftX = SEGMENT_WIDTH_PIXELS;
                 leftY = 2 * SEGMENT_HEIGHT_PIXELS;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.75);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(0.0);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 2.1);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.setVisible(false);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                //2.1, 2.3, 2.5, 2.7, 2.89, 3.07, 3.25, 3.42 || 0.4, 0.6, 0.8, 0.97, 1.15, 1.33, 1.51, 1.7
+                lane1 = new Lane((byte) 1, 142, 0, SEGMENT_HEIGHT_RATIO * 3.42, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.42 + 1.7));
+                lane2 = new Lane((byte) 2, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.42 + 1.7), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.7);
+                lane3 = new Lane((byte) 3, 142, 0, SEGMENT_HEIGHT_RATIO * 3.25, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.25 + 1.51));
+                lane4 = new Lane((byte) 4, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.25 + 1.51), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.51);
+                lane5 = new Lane((byte) 5, 142, 0, SEGMENT_HEIGHT_RATIO * 3.07, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.07 + 1.33));
+                lane6 = new Lane((byte) 6, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.07 + 1.33), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.33);
+                lane7 = new Lane((byte) 7, 142, 0, SEGMENT_HEIGHT_RATIO * 2.89, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.89 + 1.15));
+                lane8 = new Lane((byte) 8, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.89 + 1.15), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.15);
+                lane9 = new Lane((byte) 9, 142, 0, SEGMENT_HEIGHT_RATIO * 2.7, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.7 + 0.97));
+                lane10 = new Lane((byte) 10, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.7 + 0.97), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.97);
+                lane11 = new Lane((byte) 11, 142, 0, SEGMENT_HEIGHT_RATIO * 2.5, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.5 + 0.8));
+                lane12 = new Lane((byte) 12, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.5 + 0.8), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.8);
+                lane13 = new Lane((byte) 13, 142, 0, SEGMENT_HEIGHT_RATIO * 2.3, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.3 + 0.6));
+                lane14 = new Lane((byte) 14, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.3 + 0.6), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.6);
+                lane15 = new Lane((byte) 15, 142, 0, SEGMENT_HEIGHT_RATIO * 2.1, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.1 + 0.4));
+                lane16 = new Lane((byte) 16, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (2.1 + 0.4), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.4);
 
                 break;
             case ((byte) 13):
@@ -632,180 +651,196 @@ public class Segment {
                 break;
             case ((byte) 20):
             case ((byte) 21):
-                if (segmentId == 20) {
+                if (segmentId == (byte) 20) {
                     leftX = SEGMENT_WIDTH_PIXELS;
                 } else {
                     leftX = 3 * SEGMENT_WIDTH_PIXELS;
                 }
                 leftY = 0;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(0.0);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 2.08);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 2.08);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline3.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+
+                polyline4.setVisible(false);
+
+                //0.39, 0.57, 0.75, 0.92, 1.11, 1.3, 1.5, 1.7
+                lane1 = new Lane((byte) 1, 196, 0, SEGMENT_HEIGHT_RATIO * 1.7, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.7);
+                lane2 = new Lane((byte) 2, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.7, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.7);
+                lane3 = new Lane((byte) 3, 196, 0, SEGMENT_HEIGHT_RATIO * 1.5, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.5);
+                lane4 = new Lane((byte) 4, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.5, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.5);
+                lane5 = new Lane((byte) 5, 196, 0, SEGMENT_HEIGHT_RATIO * 1.3, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.3);
+                lane6 = new Lane((byte) 6, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.3, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.3);
+                lane7 = new Lane((byte) 7, 196, 0, SEGMENT_HEIGHT_RATIO * 1.11, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.11);
+                lane8 = new Lane((byte) 8, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.11, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 1.11);
+                lane9 = new Lane((byte) 9, 196, 0, SEGMENT_HEIGHT_RATIO * 0.92, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.92);
+                lane10 = new Lane((byte) 10, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.92, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.92);
+                lane11 = new Lane((byte) 11, 196, 0, SEGMENT_HEIGHT_RATIO * 0.75, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.75);
+                lane12 = new Lane((byte) 12, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.75, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.75);
+                lane13 = new Lane((byte) 13, 196, 0, SEGMENT_HEIGHT_RATIO * 0.57, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.57);
+                lane14 = new Lane((byte) 14, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.57, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.57);
+                lane15 = new Lane((byte) 15, 196, 0, SEGMENT_HEIGHT_RATIO * 0.39, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.39);
+                lane16 = new Lane((byte) 16, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.39, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 0.39);
 
                 break;
-            case ((byte) 22):
+            case ((byte) 7):
                 leftX = SEGMENT_WIDTH_PIXELS;
-                leftY = 3 * SEGMENT_HEIGHT_PIXELS;
+                leftY = SEGMENT_HEIGHT_PIXELS;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.75);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.5);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.setVisible(false);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                //2.1, 2.3, 2.5, 2.7, 2.89, 3.07, 3.25, 3.42 || 3.9, 4.1, 4.3, 4.49, 4.67, 4.85, 5.04, 5.22
+                lane1 = new Lane((byte) 1, 142, 0, SEGMENT_HEIGHT_RATIO * 3.42, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.22 + 3.42));
+                lane2 = new Lane((byte) 2, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.22 + 3.42), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.22);
+                lane3 = new Lane((byte) 3, 142, 0, SEGMENT_HEIGHT_RATIO * 3.25, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.04 + 3.25));
+                lane4 = new Lane((byte) 4, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.04 + 3.25), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.04);
+                lane5 = new Lane((byte) 5, 142, 0, SEGMENT_HEIGHT_RATIO * 3.07, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.85 + 3.07));
+                lane6 = new Lane((byte) 6, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.85 + 3.07), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.85);
+                lane7 = new Lane((byte) 7, 142, 0, SEGMENT_HEIGHT_RATIO * 2.89, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.67 + 2.89));
+                lane8 = new Lane((byte) 8, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.67 + 2.89), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.67);
+                lane9 = new Lane((byte) 9, 142, 0, SEGMENT_HEIGHT_RATIO * 2.7, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.49 + 2.7));
+                lane10 = new Lane((byte) 10, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.49 + 2.7), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.49);
+                lane11 = new Lane((byte) 11, 142, 0, SEGMENT_HEIGHT_RATIO * 2.5, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.3 + 2.5));
+                lane12 = new Lane((byte) 12, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.3 + 2.5), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.3);
+                lane13 = new Lane((byte) 13, 142, 0, SEGMENT_HEIGHT_RATIO * 2.3, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.1 + 2.3));
+                lane14 = new Lane((byte) 14, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.1 + 2.3), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.1);
+                lane15 = new Lane((byte) 15, 142, 0, SEGMENT_HEIGHT_RATIO * 2.1, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.9 + 2.1));
+                lane16 = new Lane((byte) 16, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.9 + 2.1), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.9);
 
                 break;
-            case ((byte) 23):
+            case ((byte) 8):
                 leftX = 3 * SEGMENT_WIDTH_PIXELS;
-                leftY = 3 * SEGMENT_HEIGHT_PIXELS;
+                leftY = SEGMENT_HEIGHT_PIXELS;
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.5);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 1.75);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.8);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.setVisible(false);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                //                                                          2.1, 2.3, 2.5, 2.7, 2.89, 3.07, 3.25, 3.42 || 3.9, 4.1, 4.3, 4.49, 4.67, 4.85, 5.04, 5.22
+                lane1 = new Lane((byte) 1, 142, 0, SEGMENT_HEIGHT_RATIO * 5.22, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.22 + 3.42));
+                lane2 = new Lane((byte) 2, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.22 + 3.42), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.22);
+                lane3 = new Lane((byte) 3, 142, 0, SEGMENT_HEIGHT_RATIO * 5.04, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.04 + 3.25));
+                lane4 = new Lane((byte) 4, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (5.04 + 3.25), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.04);
+                lane5 = new Lane((byte) 5, 142, 0, SEGMENT_HEIGHT_RATIO * 4.85, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.85 + 3.07));
+                lane6 = new Lane((byte) 6, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.85 + 3.07), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.85);
+                lane7 = new Lane((byte) 7, 142, 0, SEGMENT_HEIGHT_RATIO * 4.67, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.67 + 2.89));
+                lane8 = new Lane((byte) 8, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.67 + 2.89), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.67);
+                lane9 = new Lane((byte) 9, 142, 0, SEGMENT_HEIGHT_RATIO * 4.49, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.49 + 2.7));
+                lane10 = new Lane((byte) 10, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.49 + 2.7), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.49);
+                lane11 = new Lane((byte) 11, 142, 0, SEGMENT_HEIGHT_RATIO * 4.3, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.3 + 2.5));
+                lane12 = new Lane((byte) 12, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.3 + 2.5), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.3);
+                lane13 = new Lane((byte) 13, 142, 0, SEGMENT_HEIGHT_RATIO * 4.1, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.1 + 2.3));
+                lane14 = new Lane((byte) 14, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (4.1 + 2.3), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.1);
+                lane15 = new Lane((byte) 15, 142, 0, SEGMENT_HEIGHT_RATIO * 3.9, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.9 + 2.1));
+                lane16 = new Lane((byte) 16, 142, 0.5 * SEGMENT_WIDTH_PIXELS, 0.5 * SEGMENT_HEIGHT_RATIO * (3.9 + 2.1), SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 3.9);
 
                 break;
             case ((byte) 24):
             case ((byte) 25):
                 leftY = 4 * SEGMENT_HEIGHT_PIXELS;
-                if (segmentId == 24) {
+                if (segmentId == (byte) 24) {
                     leftX = SEGMENT_WIDTH_PIXELS;
                 } else {
                     leftX = 3 * SEGMENT_WIDTH_PIXELS;
                 }
 
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
-                polyline1.getPoints().add();
+                polyline1.getPoints().add(0.0);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.61);
+                polyline1.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline1.getPoints().add(SEGMENT_HEIGHT_RATIO * 3.61);
 
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
-                polyline2.getPoints().add();
+                polyline2.getPoints().add(0.0);
+                polyline2.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
+                polyline2.getPoints().add((double) SEGMENT_WIDTH_PIXELS);
+                polyline2.getPoints().add((double) SEGMENT_HEIGHT_PIXELS);
 
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
-                polyline3.getPoints().add();
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
+                polyline3.getPoints().add(0.0);
 
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
-                polyline4.getPoints().add();
+                polyline3.setVisible(false);
 
-                lane1 = new Lane((byte) 1, );
-                lane2 = new Lane((byte) 2, );
-                lane3 = new Lane((byte) 3, );
-                lane4 = new Lane((byte) 4, );
-                lane5 = new Lane((byte) 5, );
-                lane6 = new Lane((byte) 6, );
-                lane7 = new Lane((byte) 7, );
-                lane8 = new Lane((byte) 8, );
-                lane9 = new Lane((byte) 9, );
-                lane10 = new Lane((byte) 10, );
-                lane11 = new Lane((byte) 11, );
-                lane12 = new Lane((byte) 12, );
-                lane13 = new Lane((byte) 13, );
-                lane14 = new Lane((byte) 14, );
-                lane15 = new Lane((byte) 15, );
-                lane16 = new Lane((byte) 16, );
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+                polyline4.getPoints().add(0.0);
+
+                polyline4.setVisible(false);
+
+                //5.31, 5.12, 4.95, 4.75, 4.57, 4.39, 4.2, 4
+                lane1 = new Lane((byte) 1, 196, 0, SEGMENT_HEIGHT_RATIO * 5.31, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.31);
+                lane2 = new Lane((byte) 2, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.31, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.31);
+                lane3 = new Lane((byte) 3, 196, 0, SEGMENT_HEIGHT_RATIO * 5.12, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.12);
+                lane4 = new Lane((byte) 4, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.12, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 5.12);
+                lane5 = new Lane((byte) 5, 196, 0, SEGMENT_HEIGHT_RATIO * 4.95, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.95);
+                lane6 = new Lane((byte) 6, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.95, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.95);
+                lane7 = new Lane((byte) 7, 196, 0, SEGMENT_HEIGHT_RATIO * 4.75, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.75);
+                lane8 = new Lane((byte) 8, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 475, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.75);
+                lane9 = new Lane((byte) 9, 196, 0, SEGMENT_HEIGHT_RATIO * 4.57, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.57);
+                lane10 = new Lane((byte) 10, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.57, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.57);
+                lane11 = new Lane((byte) 11, 196, 0, SEGMENT_HEIGHT_RATIO * 4.39, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.39);
+                lane12 = new Lane((byte) 12, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.39, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.39);
+                lane13 = new Lane((byte) 13, 196, 0, SEGMENT_HEIGHT_RATIO * 4.2, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.2);
+                lane14 = new Lane((byte) 14, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.2, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4.2);
+                lane15 = new Lane((byte) 15, 196, 0, SEGMENT_HEIGHT_RATIO * 4, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4);
+                lane16 = new Lane((byte) 16, 196, 0.5 * SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4, SEGMENT_WIDTH_PIXELS, SEGMENT_HEIGHT_RATIO * 4);
 
                 break;
         }
